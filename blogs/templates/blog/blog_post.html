@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for result in results %}
+
+<a href="{% url 'blogs:detail' slug=result.slug %}"><h1>{{result.title}}</h1></a>
+  <h2>{{result.body}}</h2>
+  <h2>{{result.slug}}</h2>
+  <h2>{{result.date}}</h2>
+{% endfor %}
+
+</body>
+</html>
+
