@@ -6,13 +6,17 @@
     <title>Title</title>
 </head>
 <body>
-{% for result in results %}
-
-<a href="{% url 'blogs:detail' slug=result.slug %}"><h1>{{result.title}}</h1></a>
-  <h2>{{result.body}}</h2>
-  <h2>{{result.slug}}</h2>
-  <h2>{{result.date}}</h2>
-{% endfor %}
+<form action="{% url 'blogs:search' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" placeholder="Search ..." name="searched-value" required>
+    <input type="submit" value="Search">
+</form>
+    {% for result in results %}
+    <a href="{% url 'blogs:detail' slug=result.slug %}"><h1>{{result.title}}</h1></a>
+      <h2>{{result.body}}</h2>
+      <h2>{{result.slug}}</h2>
+      <h2>{{result.date}}</h2>
+    {% endfor %}
 
 </body>
 </html>

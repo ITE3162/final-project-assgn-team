@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>You searched for {{values}}</h1>
+<div class="matches">
+    <div class="match">
+        {% if matches %}
+        {% for match in matches %}
+            <h2>{{match.title}}</h2>
+            <p>{{match.slug}}</p>
+            <p>{{match.body}}</p>
+        {% endfor %}
+        {% else %}
+        <p>Your search -<em>'{{values}}'</em>- did not match any posts.</p>
+        <a href="{% url 'blogs:blog_home' %}">Back to posts</a>
+        {% endif %}
+    </div>
+</div>
+
+
+</body>
+</html>

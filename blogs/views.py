@@ -20,5 +20,9 @@ def post_detail(request, slug):
 
 
 def search_post(request):
-    searchform = forms.Venue()
-    return render(request, 'blog/blog_post.html', {'form':searchform})
+    if request.method == "POST":
+        searched = request.POST.get('searched-value')
+        matches = Post.objects.filter(title__contains=searched)
+        return render(request, 'blog/search.html', {'values': searched, 'matches':matches})
+    else:
+        return render(request, 'blog/search.html')
