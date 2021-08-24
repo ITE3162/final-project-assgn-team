@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+{% block content %}
+<div class="post_create">
+    <h2>Create a new Post</h2>
+    <form action="{% url 'blogs:create' %}" class="site-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{myform}}
+        <input type="submit" value="Create">
+    </form>
+</div>
+<script src="/static/js/slugify.js"></script>
+{% endblock %}
+<!--</body>-->
+<!--</html>-->

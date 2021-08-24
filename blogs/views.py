@@ -1,7 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 from django import forms
+from .import forms
 from blogs.models import Post
 
 # Create your views here.
@@ -26,3 +26,17 @@ def search_post(request):
         return render(request, 'blog/search.html', {'values': searched, 'matches':matches})
     else:
         return render(request, 'blog/search.html')
+
+
+def post_create(request):
+    if request.method == "POST":
+        form = forms.CreatePost(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False) # Pre-saving
+            instance.author = request.user # adding user as Author to the instance of post
+            instance.save() # saving post with author
+            return redirect('blogs:blog_home')
+    else:
+        form = forms.CreatePost()
+    return render(request, 'blog/post_create.html', {'myform': form})
+
