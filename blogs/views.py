@@ -11,7 +11,11 @@ from blogs.models import Post
 
 def blog_post(request):
     results = Post.objects.all()
-    return render(request, 'blog/blog_post.html', {'results': results})
+    if len(results) == 0:
+        empty_msg = "No post to show"
+        return render(request, 'blog/blog_post.html', {'empty': empty_msg})
+    else:
+        return render(request, 'blog/blog_post.html', {'results': results})
 
 
 def post_detail(request, slug):
@@ -30,7 +34,7 @@ def search_post(request):
 
 def post_create(request):
     if request.method == "POST":
-        form = forms.CreatePost(request.POST)
+        form = forms.CreatePost(request.POST, request.FILES)
         if form.is_valid():
             instance = form.save(commit=False) # Pre-saving
             instance.author = request.user # adding user as Author to the instance of post

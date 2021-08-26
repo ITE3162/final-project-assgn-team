@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Community-Posts</title>
+    <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
 </head>
 <body>
 <div class="wrapper">
         <header>
-            <h1><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""></a></h1>
+            <div><a href="{% url 'home' %}"  class="wrapper__logo"><img src="{% static 'images/logo.png' %}" alt=""></a>
+             Community</div>
                 <nav>
                     <ul>
                         {% if user.is_authenticated %}
@@ -18,7 +20,7 @@
                                 <button type="submit">Logout</button>
                             </form>
                         </li>
-                        <li><a href="{% url 'blogs:create' %}" class="highlight">New Article</a></li>
+                        <li><a href="{% url 'blogs:create' %}" class="highlight">New Post</a></li>
                         {% else %}
                         <li><a href="{% url 'accounts:login' %}">Log In</a></li>
                         <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
