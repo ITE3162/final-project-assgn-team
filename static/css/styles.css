@@ -20,7 +20,7 @@ html{
     width: 100%;
     padding: 15px 0;
     z-index: 999;
-    background-color: rgb(78, 59, 63);
+    /*background-color: rgb(78, 59, 63);*/
     height: 90px;
 }
 .navbar .max-width{
@@ -55,7 +55,10 @@ html{
     display: flex;
     color: #000;
     min-height: 500px;
-    background: gray;
+     /*background: gray;*/
+    background-image:url(/static/images/background.jpg);
+    background-repeat-y:no-repeat;
+    background-size: cover;
     height: 670px;
 }
 .home .max-width{
@@ -64,6 +67,7 @@ html{
 .home .home-content{
 padding-top: 0;
 margin-left:600px;
+
 }
 
 .home .home-content .text-1{
@@ -74,6 +78,7 @@ margin-left:600px;
     font-size: 27px;
     font-weight: 300;
     margin-left: -3px;
+    color:#eee;
 }
 .home .home-content .text-3{
     font-size: 35px;

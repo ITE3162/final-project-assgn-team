@@ -1,7 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 from django import forms
+from .import forms
 from blogs.models import Post
 
 # Create your views here.
@@ -11,7 +11,11 @@ from blogs.models import Post
 
 def blog_post(request):
     results = Post.objects.all()
-    return render(request, 'blog/blog_post.html', {'results': results})
+    if len(results) == 0:
+        empty_msg = "No post to show"
+        return render(request, 'blog/blog_post.html', {'empty': empty_msg})
+    else:
+        return render(request, 'blog/blog_post.html', {'results': results})
 
 
 def post_detail(request, slug):
@@ -20,5 +24,23 @@ def post_detail(request, slug):
 
 
 def search_post(request):
-    searchform = forms.Venue()
-    return render(request, 'blog/blog_post.html', {'form':searchform})
+    if request.method == "POST":
+        searched = request.POST.get('searched-value')
+        matches = Post.objects.filter(title__contains=searched)
+        return render(request, 'blog/search.html', {'values': searched, 'matches':matches})
+    else:
+        return render(request, 'blog/search.html')
+
+
+def post_create(request):
+    if request.method == "POST":
+        form = forms.CreatePost(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False) # Pre-saving
+            instance.author = request.user # adding user as Author to the instance of post
+            instance.save() # saving post with author
+            return redirect('blogs:blog_home')
+    else:
+        form = forms.CreatePost()
+    return render(request, 'blog/post_create.html', {'myform': form})
+

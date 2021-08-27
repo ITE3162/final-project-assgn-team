@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+{% block content %}
+<h1>Log in</h1>
+<form class="site-form" action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    <p style="color:#fff">{{ form }}</p>
+
+    {% if request.GET.next %}
+    <input type="hidden" name="next" value="{{request.GET.next}}">
+    {% endif %}
+    <input type="submit" value="login">
+</form>
+{% endblock %}
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="search">
+    <form action="{% url 'blogs:search' %}" method="POST" class="search-form">
+        {% csrf_token %}
+        <input type="text" placeholder="Search ..." name="searched-value" required>
+        <input type="submit" value="Search">
+    </form>
+</div>
+<!--<h1>You searched for {{values}}</h1>-->
+<div class="matches">
+        {% if matches %}
+        {% for match in matches %}
+          <div class="match">
+            <h2>{{match.title}}</h2>
+            <p>{{match.body}}</p>
+          </div>
+        {% endfor %}
+
+        {% else %}
+        <p>Your search '- <em>{{values}}</em> -' did not match any posts.</p>
+        <a href="{% url 'blogs:blog_home' %}" class="back">Back to posts</a>
+        {% endif %}
+</div>
+{% endblock %}
