@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django import forms
@@ -33,7 +34,7 @@ def search_post(request):
         return render(request, 'blog/search.html')
 
 
-
+@login_required(login_url="/accounts/login/")
 def post_create(request):
     if request.method == "POST":
         form = forms.CreatePost(request.POST, request.FILES)
