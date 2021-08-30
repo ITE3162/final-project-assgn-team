@@ -22,6 +22,7 @@
               <h2><a href="{% url 'blogs:detail' slug=result.slug %}">{{result.title}}</a></h2>
               <p>{{result.short_body}}</p>
               <p>{{result.date}}</p>
+              <p class="author"><span>Author: </span>{{result.author}}</p>
         </div>
             {% endfor %}
     </div>

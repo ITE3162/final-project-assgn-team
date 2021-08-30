@@ -141,6 +141,18 @@ font-size: 2em;
 text-align:center;
 color:#43799c;
 }
+.post .author
+{
+color:red;
+padding: 10px;
+background: rgba(0, 219, 160, 0.22);
+position: absolute;
+right: 0px;
+bottom: 0px;
+margin: 0px; color:
+rgba(13, 25, 80, 0.85);
+}
+
 .site-form {
 border: 1px solid black;
 padding: 10px;
