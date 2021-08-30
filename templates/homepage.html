@@ -50,13 +50,16 @@
             <h2 class="title">About Us</h2>
             <div class="about-content">
                 <div class="column right">
-                    <div class="text">"We are movie news Generator."</div>
-                    <p>We are a community which operates all over the world but our headquarter is located in Rwanda (KN 666st 1AV), our concern is movie updates and movie talk show where we meet and discuss how movies filmed, when a certain movie will be released from box office either hollywood,bollywood,nollywood and as well as hillwood, in simple words 'we are home movie news generator' </p>
-                    <p>so movie lovers are most welcome to the their community and have chill with others either local or abroad. </p>
+                    {% if aboutus %}
+                    {% for about in aboutus %}
+                    <div class="text">"{{about.heading}}"</div>
+                    <p>{{about.description}}</p>
                 </div>
                 <div class="column left">
-                    <img src="{% static 'images/logo.png' %}" alt="">
+                    <img src="{{about.logo.url}}" alt="">
                 </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </section>
