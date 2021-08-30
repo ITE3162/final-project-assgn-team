@@ -307,7 +307,7 @@ section .title::after{
 .blog{
     background: #000;
     color: #fff;
-    height: 670px;
+    /*height: 670px;*/
     padding-top: 62px;
 }
 .blog .title::before{

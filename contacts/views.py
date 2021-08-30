@@ -1,11 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import ContactInfo
+from blogs.models import Post
 
 
 # Create your views here.
 def contact(request):
+    blogs = Post.objects.all().order_by("title")
     if request.method == "POST":
+
         sender = request.POST['email']
         subject = request.POST['subject']
         message = request.POST['body']
@@ -13,9 +16,9 @@ def contact(request):
         contact_instance = ContactInfo(sender=sender, subject=subject, message=message)
 
         contact_instance.save()
-        return render(request, 'homepage.html', {'context': sender})
+        return render(request, 'homepage.html', {'context': sender, 'blogs': blogs})
     else:
-        return render(request, 'homepage.html')
+        return render(request, 'homepage.html', {'blogs': blogs})
     # if request.method == "POST":
     #     msg_email = request.POST['email']
     #     msg_subject = request.POST['subject']
