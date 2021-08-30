@@ -18,13 +18,16 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 from . import views
+from contacts import views as contacts_view
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='home'),
+    # path('', views.show_blog_on_homepage, name='home'),
     path('blog/', include('blogs.urls')),
     path('accounts/', include('accounts.urls')),
+    path('contact/', contacts_view.contact, name='contact'),
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

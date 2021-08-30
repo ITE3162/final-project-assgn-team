@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django import forms
 from .import forms
 from blogs.models import Post
+from django.core.mail import send_mail
 
 # Create your views here.
 
