@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="related-post">
+        <h2>Related Posts</h2>
+        <div class="relate">
+        {% for relate in relates %}
+         <div><img src="{{relate.thumb.url}}" alt=""></div>
+         <div><a href="{% url 'blogs:detail' slug=relate.slug">{{relate.title}}</a></div>
+        {% empty %}
+        There are no similar posts
+        {% endfor %}
+       </div>
+</div>
+{% endblock %}

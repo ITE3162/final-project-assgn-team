@@ -123,15 +123,17 @@
 
         </div>
     </section>
+<!-- blog section start -->
 <section class="blog" id="blog">
         <div class="max-width">
             <h2 class="title">Blog Posts</h2>
             <div class="blog-content">
+
                 <div class="card">
-            {% if blogs %}
-            {% for blog in blogs %}
+                {% if blogs %}
+                {% for blog in blogs %}
                     <div class="box">
-                        <img src="{{blog.thumb.url}}" alt="">
+                        <a href="{% url 'blogs:detail' slug=blog.slug %}"><img src="{{blog.thumb.url}}" alt=""></a>
                         <p>{{blog.short_body}}</p>
                         <p>{{blog.slug}}</p>
                         <div class="text">{{blog.title}}</div>
@@ -144,43 +146,6 @@
             </div>
         </div>
     </section>
-<!--    <section class="blog" id="blog">-->
-<!--        <div class="max-width">-->
-<!--            <h2 class="title">Blog Posts</h2>-->
-<!--            <div class="blog-content">-->
-<!--                <div class="card">-->
-
-<!--                    {% if blogs %}-->
-<!--                    {% for blog in blogs %}-->
-<!--                    <div class="box">-->
-<!--                        <img src="{{blog.thumb.url}}" alt="">-->
-<!--                        <p>{{blog.short_body}}</p>-->
-<!--                        <p>{{blog.slug}}</p>-->
-<!--                        <div class="text">{{blog.title}}</div>-->
-
-<!--                    </div>-->
-<!--                    {% endfor %}-->
-<!--                    {% else %}-->
-<!--                    <h2>No blogs</h2>-->
-<!--                    {% endif %}-->
-
-<!--&lt;!&ndash;                    <div class="box">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <img src="{% static 'images/bad-genius.jpg' %}" alt="" >&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Cheating at school becomes a business for earning mone</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Eric</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="text">Bad Genius</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div class="box">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <img src="{% static 'images/24-hours.jpg' %}" alt="">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Doing all job needed in 24 hours</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Silento</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="text">24 Hours Chrono</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--               </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
 
     <!-- contact section start -->
     <section class="contact" id="contact">
@@ -210,7 +175,6 @@
                     </div>
                     <div class="right">
                         <h2>Contact us</h2>
-                        {{message_name}}
                         <form action="{% url 'contact' %}" method="POST">
                             {% csrf_token %}
                             <input type="email" placeholder="Enter Email address" name="email" required>

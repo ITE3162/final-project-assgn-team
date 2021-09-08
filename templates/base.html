@@ -21,9 +21,12 @@
                             </form>
                         </li>
                         <li><a href="{% url 'blogs:create' %}" class="highlight">New Post</a></li>
+                        <li><img src="{% static 'images/profile-1.jpg' %}" style="border:1px solid black; border-radius:50px; width:50px; margin-bottom:3px; text-align:center;" alt=""></li>
                         {% else %}
                         <li><a href="{% url 'accounts:login' %}">Log In</a></li>
                         <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+
+                        <li style="border:1px solid black; border-radius:50px;"><a href="">profile</a></li>
                         {% endif %}
                     </ul>
                 </nav>

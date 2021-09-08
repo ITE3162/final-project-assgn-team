@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-
-
+from taggit.managers import TaggableManager
 # Create your models here.
 
 
@@ -12,6 +11,9 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     thumb = models.ImageField(default='default.jpg', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    tags = TaggableManager()
+
+    # objects = PostManager()
 
     def __str__(self):
         return self.title
