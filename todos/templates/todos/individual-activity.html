@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community-Home</title>
+    <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+   <div class="container">
+       <a href="{% url 'home' %}" class="">Back to home</a>
+       <div class="row">
+           <div class="col-md-6 offset-3 bg-light">
+                {% if inds %}
+                   <p class="text-center mt-3"><i class="{{inds.icon}}"></i></p>
+                   <h2 class="text-center pb-3">{{inds.title}}</h2>
+                   <p class="text-justify">{{inds.description}}</p>
+                   {% endif %}
+               </div>
+       </div>
+   </div>
+</body>
+</html>
