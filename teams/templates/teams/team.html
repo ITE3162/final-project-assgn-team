@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<!-- team section start -->
+    <section class="team" id="team">
+        <div class="max-width">
+            <h2 class="title">Our Team</h2>
+            <div class="container">
+                <div class="row">
+                         {% if teams %}
+                         {% for team in teams %}
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4 offset-2">
+                                    <img   class="rounded-pill" width="175" height="175" src="{{team.image.url}}" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="name"><strong>Name:</strong><span> {{team.name}}</span></p>
+                                     <p class="mate-title"><strong>Title:</strong><span class="desc"> {{team.title}}</span></p>
+                                     <p class="desc"> {{team.description}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>

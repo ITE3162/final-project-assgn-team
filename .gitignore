@@ -75,3 +75,5 @@ fabric.properties
 environment
 .env
 myEnv
+todos/
+fontawesome/

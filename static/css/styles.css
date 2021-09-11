@@ -32,9 +32,11 @@ html{
     color: #fff;
     font-size: 35px;
     font-weight: 600;
+    margin:0;
+    margin-right:250px
 }
-.navbar .logo a span{
-    color: crimson;
+.navbar .menu{
+/*    margin-left:10px; */
 }
 .navbar .menu li{
     display: inline;
@@ -42,6 +44,7 @@ html{
 }
 .navbar .menu li a{
     color: gold;
+    text-decoration:none;
     font-size: 18px;
     font-weight: 500;
     margin-left: 25px;
@@ -55,8 +58,7 @@ html{
     display: flex;
     color: #000;
     min-height: 500px;
-     /*background: gray;*/
-    background-image:url(/static/images/background.jpg);
+    background:url(/static/images/background/background.jpg) fixed;
     background-repeat-y:no-repeat;
     background-size: cover;
     height: 670px;
@@ -98,6 +100,7 @@ margin-left:600px;
     border-radius: 6px;
     border: 2px solid crimson;
     transition: all 0.3s ease;
+    text-decoration:none;
 }
 .home .home-content  .more-about{
 background: #0f121f;
@@ -224,31 +227,33 @@ section .title::after{
 }/*
 .service .service-content .card:hover{
     background: crimson;
-}
+}*/
 .service .service-content .card .box{
     transition: all 0.3s ease;
 }
+
 .service .service-content .card:hover .box{
-    transform: scale(1.05);
+    transform: scale(1.025);
 }
 .service .service-content .card i{
-    font-size: 20px;
+    font-size: 30px;
     color: crimson;
 }
 .service .service-content .card:hover i{
-    color: #fff;
+    /*color: #fff;*/
 }
 .service .service-content .card .text{
     font-size: 19px;
     font-weight: 500;
     margin: 10px 0 7px 0;
-}*/
+}
 
 .service .service-content .card{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 50px;
-
+  background:black;
+  color:white;
 }
 .service .service-content .card .box div{
  font-size:24px;
@@ -268,6 +273,7 @@ section .title::after{
   width: 140px;
   color:#fff;
   border-radius:4px;
+  text-decoration:none;
 }
 
 /* team section styling */
@@ -318,6 +324,7 @@ section .title::after{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 50px;
+  background:#000;
 }
 .blog .blog-content .card .box div{
  font-size:24px;
@@ -337,8 +344,8 @@ section .title::after{
   text-align:center;
 }
 .blog .blog-content .card .box a{
-  background:red;
-  margin:0px 120px auto;
+  /*background:red;*/
+  /*margin:0px 120px auto;*/
   height:30px;
   width: 140px;
   color:#fff;
@@ -367,6 +374,9 @@ section .title::after{
 .contact .contact-content .column .left{
     display:grid;
     grid-template-rows: 2em 2em 2em;
+}
+.contact .contact-content .column .left h2{
+    font-size: 28px;
 }
 .contact .contact-content .column .left .left-top{
    display:grid;

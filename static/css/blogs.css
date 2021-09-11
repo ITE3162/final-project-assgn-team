@@ -141,10 +141,31 @@ font-size: 2em;
 text-align:center;
 color:#43799c;
 }
+.post .author
+{
+padding: 10px;
+background: rgba(0, 219, 160, 0.22);
+position: absolute;
+right: 0px;
+bottom: 0px;
+margin: 0px; color:
+rgba(13, 25, 80, 0.85);
+}
+.post_create h2{
+  color:#fff;
+}
 .site-form {
 border: 1px solid black;
 padding: 10px;
 margin-top: 20px;
+}
+.create-form, .login-form{
+  background:url('../images/background/hall3.jpg');
+  background-repeat-y:no-repeat;
+}
+.signup-form{
+  background:url('../images/background/hall2.jpg') fixed;
+  background-size:cover;
 }
 .site-form form{
   text-align:center;
@@ -191,4 +212,39 @@ display: none;
   background-color:green;
   cursor:pointer;
   width:95px;
+}
+.detail-column{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+/* .related-post{
+  display:grid;
+  grid-template-columns: 1fr
+
+} */
+.related-post h2{
+  color:#fff;
+  margin-left:50px;
+}
+.relate{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:6em 6em;
+}
+.relate img{
+  border-radius:50%;
+  height:100px;
+  width: 110px;
+  margin-left:50px;
+}
+
+.relate div a{
+  float:right;
+  margin-right: 1000px;
+  margin-top: 30px;
+  text-decoration:none;
+  color:#fff;
+  width:150px;
 }

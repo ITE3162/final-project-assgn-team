@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community-Home</title>
+    <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -14,11 +16,35 @@
     <p>Thanks to contact us!</p>
     <p>Your message received well!</p>
 </center>
+return redirect('blogs:blog_home')
 {% endif %}
+
+
+{% if inds %}
+ <nav class="navbar">
+        <div class="max-width">
+          <div class="logo"><a href="#"><img src="{% static 'logo/logo.png' %}" alt=""></a></div>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">What we do</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Get in touch</a></li>
+            </ul>
+        </div>
+    </nav>
+    <p>{{inds.title}}</p>
+    <i class="{{inds.icon}}"></i>
+    <p>{{inds.description}}</p>
+
+{% else %}
+
+
 
     <nav class="navbar">
         <div class="max-width">
-          <div class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt=""></a></div>
+          <div class="logo"><a href="#"><img src="{% static '/logo/logo.png' %}" alt=""></a></div>
             <ul class="menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -50,13 +76,17 @@
             <h2 class="title">About Us</h2>
             <div class="about-content">
                 <div class="column right">
-                    <div class="text">"We are movie news Generator."</div>
-                    <p>We are a community which operates all over the world but our headquarter is located in Rwanda (KN 666st 1AV), our concern is movie updates and movie talk show where we meet and discuss how movies filmed, when a certain movie will be released from box office either hollywood,bollywood,nollywood and as well as hillwood, in simple words 'we are home movie news generator' </p>
-                    <p>so movie lovers are most welcome to the their community and have chill with others either local or abroad. </p>
+                    {% if aboutus %}
+                    {% for about in aboutus %}
+                    <div class="text">"{{about.heading}}"</div>
+                    <p>{{about.description}}</p>
                 </div>
                 <div class="column left">
-                    <img src="{% static 'images/logo.png' %}" alt="">
+<!--                    <img src="{{about.logo.url}}" alt="">-->
+                    <img src="{% static 'logo/logo.png' %}" alt="">
                 </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </section>
@@ -67,26 +97,16 @@
             <h2 class="title">What we do</h2>
             <div class="service-content">
                 <div class="card">
+                        {% if todos %}
+                        {% for todo in todos %}
                     <div class="box">
-                       <i class="fas fa-code"></i>
-                        <div class="text">Film Reviews</div>
-                        <p>We provide to you a web app that meets with your wishes</p>
-                        <a href="">Read More</a>
+                        <i class="{{todo.icon}}"></i>
+                        <div class="text">{{todo.title}}</div>
+                        <p>{{todo.description}}</p>
+                        <a href="{% url 'todos:what_we_do' title=todo.title %}">Read More</a>
                     </div>
-
-                    <div class="box">
-                        <i class="fas fa-blog"></i>
-                        <div class="text">Movie Blogs</div>
-                        <p>We design website for your commercial business or organization.</p>
-                        <a href="">Read More</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="{% static 'images/events.svg' %}" alt="">
-                        <div class="text">Events</div>
-                        <p>New tech for developers for developing apps.</p>
-                        <a href="">Read More</a>
-                    </div>
+                    {% endfor %}
+                    {% endif %}
                </div>
             </div>
         </div>
@@ -96,39 +116,42 @@
     <section class="team" id="team">
         <div class="max-width">
             <h2 class="title">Our Team</h2>
-            <div class="team-content">
-                <div class="column">
-                    <div class="left-left">
-                        <div><img src="{% static 'images/profile-1.jpg' %}" alt="" class="img"></div>
-                       <div>
-                           <p class="name">Name:<span class="desc">Aimable</span></p>
-                           <p class="mate-title">Title:<span class="desc">Director</span></p>
-                         <p class="desc">He is a director of movies such as Kanyana, Ibara,... </p>
-                       </div>
-                    </div>
-
-                        <div class="right-right">
-                            <div><img src="{% static 'images/profile-2.jpg' %}" alt="" class="img"></div>
-                            <div>
-                                <p class="name">Name:<span class="desc">Phillipe</span></p>
-                                <p class="mate-title">Name:<span class="desc">Actor</span></p>
-                                <p class="desc">He is one ever famous actor</p>
+            <div class="container">
+                <div class="row">
+                         {% if teams %}
+                         {% for team in teams %}
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4 offset-2">
+                                    <img   class="rounded-pill" width="175" height="175" src="{{team.image.url}}" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="name"><strong>Name:</strong><span> {{team.name}}</span></p>
+                                     <p class="mate-title"><strong>Title:</strong><span class="desc"> {{team.title}}</span></p>
+                                     <p class="desc"> {{team.description}}</p>
+                                </div>
                             </div>
+
                         </div>
+                    {% endfor %}
+                    {% endif %}
                 </div>
-        </div>
+
+            </div>
 
         </div>
     </section>
+<!-- blog section start -->
 <section class="blog" id="blog">
         <div class="max-width">
             <h2 class="title">Blog Posts</h2>
             <div class="blog-content">
+
                 <div class="card">
-            {% if blogs %}
-            {% for blog in blogs %}
+                {% if blogs %}
+                {% for blog in blogs %}
                     <div class="box">
-                        <img src="{{blog.thumb.url}}" alt="">
+                        <a href="{% url 'blogs:detail' slug=blog.slug %}"><img src="{{blog.thumb.url}}" alt=""></a>
                         <p>{{blog.short_body}}</p>
                         <p>{{blog.slug}}</p>
                         <div class="text">{{blog.title}}</div>
@@ -141,43 +164,6 @@
             </div>
         </div>
     </section>
-<!--    <section class="blog" id="blog">-->
-<!--        <div class="max-width">-->
-<!--            <h2 class="title">Blog Posts</h2>-->
-<!--            <div class="blog-content">-->
-<!--                <div class="card">-->
-
-<!--                    {% if blogs %}-->
-<!--                    {% for blog in blogs %}-->
-<!--                    <div class="box">-->
-<!--                        <img src="{{blog.thumb.url}}" alt="">-->
-<!--                        <p>{{blog.short_body}}</p>-->
-<!--                        <p>{{blog.slug}}</p>-->
-<!--                        <div class="text">{{blog.title}}</div>-->
-
-<!--                    </div>-->
-<!--                    {% endfor %}-->
-<!--                    {% else %}-->
-<!--                    <h2>No blogs</h2>-->
-<!--                    {% endif %}-->
-
-<!--&lt;!&ndash;                    <div class="box">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <img src="{% static 'images/bad-genius.jpg' %}" alt="" >&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Cheating at school becomes a business for earning mone</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Eric</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="text">Bad Genius</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div class="box">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <img src="{% static 'images/24-hours.jpg' %}" alt="">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Doing all job needed in 24 hours</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Silento</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="text">24 Hours Chrono</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--               </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
 
     <!-- contact section start -->
     <section class="contact" id="contact">
@@ -186,14 +172,14 @@
             <div class="contact-content">
                 <div class="column">
                     <div class="left">
-                        <h2>Social links</h2>
+                        <h2>Social links</h2><br>
                         <div class="left-top">
-                            <a href="https://www.instagram.com/aimablenyakamwe/"><img src="{% static 'images/instagram.svg' %}" alt=""></a>
-                            <a href="https://twitter.com/N1Aimable"><img src="{% static 'images/twitter.svg' %}" alt=""></a>
+                            <a href="https://www.instagram.com/aimablenyakamwe/"><img src="{% static '/images/icon/instagram.svg' %}" alt=""></a>
+                            <a href="https://twitter.com/N1Aimable"><img src="{% static '/images/icon/twitter.svg' %}" alt=""></a>
                         </div>
                         <div class="left-down">
-                            <a href="#"><img src="{% static 'images/facebook.svg' %}" alt=""></a>
-                            <a href="" title="(+250 795439924)"><img src="{% static 'images/whatsapp.svg' %}" alt=""></a>
+                            <a href="#"><img src="{% static '/images/icon/facebook.svg' %}" alt=""></a>
+                            <a href="" title="(+250 795439924)"><img src="{% static '/images/icon/whatsapp.svg' %}" alt=""></a>
                         </div>
 
 
@@ -207,7 +193,6 @@
                     </div>
                     <div class="right">
                         <h2>Contact us</h2>
-                        {{message_name}}
                         <form action="{% url 'contact' %}" method="POST">
                             {% csrf_token %}
                             <input type="email" placeholder="Enter Email address" name="email" required>
@@ -221,7 +206,7 @@
             </div>
         </div>
     </section>
-
+{% endif %}
     <!-- footer section start -->
     <footer>
         <span>Created by N.A & Philly<span>| 2021 &copy; All Rights reserved.</span> </span>

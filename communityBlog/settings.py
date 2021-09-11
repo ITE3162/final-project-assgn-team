@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'blogs',
     'accounts',
     'contacts',
+    'about',
+    'todos',
+    'teams',
+    'taggit',
 
 
 
