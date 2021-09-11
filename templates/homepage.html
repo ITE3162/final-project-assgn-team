@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community-Home</title>
+    <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -14,7 +15,32 @@
     <p>Thanks to contact us!</p>
     <p>Your message received well!</p>
 </center>
+return redirect('blogs:blog_home')
 {% endif %}
+
+
+{% if inds %}
+ <nav class="navbar">
+        <div class="max-width">
+          <div class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt=""></a></div>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">What we do</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Get in touch</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--<h2>Hello {{inds}}</h2>-->
+    <p>{{inds.title}}</p>
+    <i class="{{inds.icon}}"></i>
+    <p>{{inds.description}}</p>
+
+{% else %}
+
+
 
     <nav class="navbar">
         <div class="max-width">
@@ -56,7 +82,8 @@
                     <p>{{about.description}}</p>
                 </div>
                 <div class="column left">
-                    <img src="{{about.logo.url}}" alt="">
+<!--                    <img src="{{about.logo.url}}" alt="">-->
+                    <img src="{% static 'logo/logo.png' %}" alt="">
                 </div>
                 {% endfor %}
                 {% endif %}
@@ -70,26 +97,31 @@
             <h2 class="title">What we do</h2>
             <div class="service-content">
                 <div class="card">
+                        {% if todos %}
+                        {% for todo in todos %}
                     <div class="box">
-                       <i class="fas fa-code"></i>
-                        <div class="text">Film Reviews</div>
-                        <p>We provide to you a web app that meets with your wishes</p>
-                        <a href="">Read More</a>
+                        <i class="{{todo.icon}}"></i>
+                        <div class="text">{{todo.title}}</div>
+                        <p>{{todo.description}}</p>
+                        <a href="{% url 'todos:what_we_do' title=todo.title %}">Read More</a>
                     </div>
+                    {% endfor %}
 
-                    <div class="box">
-                        <i class="fas fa-blog"></i>
-                        <div class="text">Movie Blogs</div>
-                        <p>We design website for your commercial business or organization.</p>
-                        <a href="">Read More</a>
-                    </div>
+                    {% endif %}
 
-                    <div class="box">
-                        <img src="{% static 'images/events.svg' %}" alt="">
-                        <div class="text">Events</div>
-                        <p>New tech for developers for developing apps.</p>
-                        <a href="">Read More</a>
-                    </div>
+<!--                    <div class="box">-->
+<!--                        <i class="fas fa-blog"></i>-->
+<!--                        <div class="text">Movie Blogs</div>-->
+<!--                        <p>We design website for your commercial business or organization.</p>-->
+<!--                        <a href="">Read More</a>-->
+<!--                    </div>-->
+
+<!--                    <div class="box">-->
+<!--                        <i class="fas fa-blog"></i>-->
+<!--                        <div class="text">Events</div>-->
+<!--                        <p>New tech for developers for developing apps.</p>-->
+<!--                        <a href="">Read More</a>-->
+<!--                    </div>-->
                </div>
             </div>
         </div>
@@ -102,7 +134,7 @@
             <div class="team-content">
                 <div class="column">
                     <div class="left-left">
-                        <div><img src="{% static 'images/profile-1.jpg' %}" alt="" class="img"></div>
+                        <div><img src="{% static 'images/team/profile-1.jpg' %}" alt="" class="img"></div>
                        <div>
                            <p class="name">Name:<span class="desc">Aimable</span></p>
                            <p class="mate-title">Title:<span class="desc">Director</span></p>
@@ -156,12 +188,12 @@
                     <div class="left">
                         <h2>Social links</h2>
                         <div class="left-top">
-                            <a href="https://www.instagram.com/aimablenyakamwe/"><img src="{% static 'images/instagram.svg' %}" alt=""></a>
-                            <a href="https://twitter.com/N1Aimable"><img src="{% static 'images/twitter.svg' %}" alt=""></a>
+                            <a href="https://www.instagram.com/aimablenyakamwe/"><img src="{% static 'images/icon/instagram.svg' %}" alt=""></a>
+                            <a href="https://twitter.com/N1Aimable"><img src="{% static 'images/icon/twitter.svg' %}" alt=""></a>
                         </div>
                         <div class="left-down">
-                            <a href="#"><img src="{% static 'images/facebook.svg' %}" alt=""></a>
-                            <a href="" title="(+250 795439924)"><img src="{% static 'images/whatsapp.svg' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'images/icon/facebook.svg' %}" alt=""></a>
+                            <a href="" title="(+250 795439924)"><img src="{% static 'images/icon/whatsapp.svg' %}" alt=""></a>
                         </div>
 
 
@@ -188,7 +220,7 @@
             </div>
         </div>
     </section>
-
+{% endif %}
     <!-- footer section start -->
     <footer>
         <span>Created by N.A & Philly<span>| 2021 &copy; All Rights reserved.</span> </span>

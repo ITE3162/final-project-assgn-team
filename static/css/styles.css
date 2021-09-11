@@ -55,8 +55,7 @@ html{
     display: flex;
     color: #000;
     min-height: 500px;
-     /*background: gray;*/
-    background-image:url(/static/images/background.jpg);
+    background:url(/static/images/background/background.jpg) fixed;
     background-repeat-y:no-repeat;
     background-size: cover;
     height: 670px;
@@ -224,15 +223,16 @@ section .title::after{
 }/*
 .service .service-content .card:hover{
     background: crimson;
-}
+}*/
 .service .service-content .card .box{
     transition: all 0.3s ease;
 }
+/*
 .service .service-content .card:hover .box{
     transform: scale(1.05);
-}
+}*/
 .service .service-content .card i{
-    font-size: 20px;
+    font-size: 30px;
     color: crimson;
 }
 .service .service-content .card:hover i{
@@ -242,7 +242,7 @@ section .title::after{
     font-size: 19px;
     font-weight: 500;
     margin: 10px 0 7px 0;
-}*/
+}
 
 .service .service-content .card{
   display:grid;

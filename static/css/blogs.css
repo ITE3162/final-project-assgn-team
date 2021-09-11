@@ -159,6 +159,14 @@ border: 1px solid black;
 padding: 10px;
 margin-top: 20px;
 }
+.create-form, .login-form{
+  background:url('../images/background/hall3.jpg');
+  background-repeat-y:no-repeat;
+}
+.signup-form{
+  background:url('../images/background/hall2.jpg') fixed;
+  background-size:cover;
+}
 .site-form form{
   text-align:center;
 }

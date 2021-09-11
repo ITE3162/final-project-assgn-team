@@ -11,7 +11,7 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     thumb = models.ImageField(default='default.jpg', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    tags = TaggableManager()
+    tags = TaggableManager(verbose_name='Category')
 
     # objects = PostManager()
 
