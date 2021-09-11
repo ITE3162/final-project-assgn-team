@@ -20,7 +20,7 @@ return redirect('blogs:blog_home')
 {% endif %}
 
 
-{% if inds %}
+
  <nav class="navbar">
         <div class="max-width">
           <div class="logo"><a href="#"><img src="{% static 'logo/logo.png' %}" alt=""></a></div>
@@ -34,13 +34,6 @@ return redirect('blogs:blog_home')
             </ul>
         </div>
     </nav>
-    <p>{{inds.title}}</p>
-    <i class="{{inds.icon}}"></i>
-    <p>{{inds.description}}</p>
-
-{% else %}
-
-
 
     <nav class="navbar">
         <div class="max-width">
@@ -102,7 +95,7 @@ return redirect('blogs:blog_home')
                     <div class="box">
                         <i class="{{todo.icon}}"></i>
                         <div class="text">{{todo.title}}</div>
-                        <p>{{todo.description}}</p>
+                        <p>{{todo.show_short_activity_desc}}</p>
                         <a href="{% url 'todos:what_we_do' title=todo.title %}">Read More</a>
                     </div>
                     {% endfor %}
@@ -206,7 +199,6 @@ return redirect('blogs:blog_home')
             </div>
         </div>
     </section>
-{% endif %}
     <!-- footer section start -->
     <footer>
         <span>Created by N.A & Philly<span>| 2021 &copy; All Rights reserved.</span> </span>

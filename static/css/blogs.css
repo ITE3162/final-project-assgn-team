@@ -3,6 +3,9 @@ background:#0d121f;
 font-family: Helvetica, Arial, sans-serif;
 font-size: 1.2rem;
 }
+a{
+  text-decoration:none;
+}
 h1{
   color:#43799c;
   text-align:center;
