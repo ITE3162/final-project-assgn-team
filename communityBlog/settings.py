@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'contacts',
     'about',
     'todos',
+    'teams',
     'taggit',
 
 

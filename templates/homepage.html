@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community-Home</title>
     <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -22,7 +23,7 @@ return redirect('blogs:blog_home')
 {% if inds %}
  <nav class="navbar">
         <div class="max-width">
-          <div class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt=""></a></div>
+          <div class="logo"><a href="#"><img src="{% static 'logo/logo.png' %}" alt=""></a></div>
             <ul class="menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -33,7 +34,6 @@ return redirect('blogs:blog_home')
             </ul>
         </div>
     </nav>
-    <!--<h2>Hello {{inds}}</h2>-->
     <p>{{inds.title}}</p>
     <i class="{{inds.icon}}"></i>
     <p>{{inds.description}}</p>
@@ -44,7 +44,7 @@ return redirect('blogs:blog_home')
 
     <nav class="navbar">
         <div class="max-width">
-          <div class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt=""></a></div>
+          <div class="logo"><a href="#"><img src="{% static '/logo/logo.png' %}" alt=""></a></div>
             <ul class="menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -106,22 +106,7 @@ return redirect('blogs:blog_home')
                         <a href="{% url 'todos:what_we_do' title=todo.title %}">Read More</a>
                     </div>
                     {% endfor %}
-
                     {% endif %}
-
-<!--                    <div class="box">-->
-<!--                        <i class="fas fa-blog"></i>-->
-<!--                        <div class="text">Movie Blogs</div>-->
-<!--                        <p>We design website for your commercial business or organization.</p>-->
-<!--                        <a href="">Read More</a>-->
-<!--                    </div>-->
-
-<!--                    <div class="box">-->
-<!--                        <i class="fas fa-blog"></i>-->
-<!--                        <div class="text">Events</div>-->
-<!--                        <p>New tech for developers for developing apps.</p>-->
-<!--                        <a href="">Read More</a>-->
-<!--                    </div>-->
                </div>
             </div>
         </div>
@@ -131,27 +116,28 @@ return redirect('blogs:blog_home')
     <section class="team" id="team">
         <div class="max-width">
             <h2 class="title">Our Team</h2>
-            <div class="team-content">
-                <div class="column">
-                    <div class="left-left">
-                        <div><img src="{% static 'images/team/profile-1.jpg' %}" alt="" class="img"></div>
-                       <div>
-                           <p class="name">Name:<span class="desc">Aimable</span></p>
-                           <p class="mate-title">Title:<span class="desc">Director</span></p>
-                         <p class="desc">He is a director of movies such as Kanyana, Ibara,... </p>
-                       </div>
-                    </div>
-
-                        <div class="right-right">
-                            <div><img src="{% static 'images/profile-2.jpg' %}" alt="" class="img"></div>
-                            <div>
-                                <p class="name">Name:<span class="desc">Phillipe</span></p>
-                                <p class="mate-title">Name:<span class="desc">Actor</span></p>
-                                <p class="desc">He is one ever famous actor</p>
+            <div class="container">
+                <div class="row">
+                         {% if teams %}
+                         {% for team in teams %}
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4 offset-2">
+                                    <img   class="rounded-pill" width="175" height="175" src="{{team.image.url}}" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="name"><strong>Name:</strong><span> {{team.name}}</span></p>
+                                     <p class="mate-title"><strong>Title:</strong><span class="desc"> {{team.title}}</span></p>
+                                     <p class="desc"> {{team.description}}</p>
+                                </div>
                             </div>
+
                         </div>
+                    {% endfor %}
+                    {% endif %}
                 </div>
-        </div>
+
+            </div>
 
         </div>
     </section>
@@ -186,14 +172,14 @@ return redirect('blogs:blog_home')
             <div class="contact-content">
                 <div class="column">
                     <div class="left">
-                        <h2>Social links</h2>
+                        <h2>Social links</h2><br>
                         <div class="left-top">
-                            <a href="https://www.instagram.com/aimablenyakamwe/"><img src="{% static 'images/icon/instagram.svg' %}" alt=""></a>
-                            <a href="https://twitter.com/N1Aimable"><img src="{% static 'images/icon/twitter.svg' %}" alt=""></a>
+                            <a href="https://www.instagram.com/aimablenyakamwe/"><img src="{% static '/images/icon/instagram.svg' %}" alt=""></a>
+                            <a href="https://twitter.com/N1Aimable"><img src="{% static '/images/icon/twitter.svg' %}" alt=""></a>
                         </div>
                         <div class="left-down">
-                            <a href="#"><img src="{% static 'images/icon/facebook.svg' %}" alt=""></a>
-                            <a href="" title="(+250 795439924)"><img src="{% static 'images/icon/whatsapp.svg' %}" alt=""></a>
+                            <a href="#"><img src="{% static '/images/icon/facebook.svg' %}" alt=""></a>
+                            <a href="" title="(+250 795439924)"><img src="{% static '/images/icon/whatsapp.svg' %}" alt=""></a>
                         </div>
 
 

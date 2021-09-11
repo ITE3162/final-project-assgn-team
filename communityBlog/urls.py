@@ -19,16 +19,19 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 from . import views
 from contacts import views as contacts_view
+from teams import views as teams_view
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='home'),
     path('', views.homepage, name='activity'),
+    path('', views.homepage, name='team'),
     path('blog/', include('blogs.urls')),
     path('accounts/', include('accounts.urls')),
     path('contact/', contacts_view.contact, name='contact'),
     path('activity/', include('todos.urls')),
+    # path('team', teams_view.view_team, name='team')
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
