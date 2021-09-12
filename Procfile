@@ -1,1 +1,1 @@
-web: gunicorn communityBlog.wsgi
+web: gunicorn final-project-assgn-team.wsgi
