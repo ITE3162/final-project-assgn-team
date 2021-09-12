@@ -19,7 +19,7 @@ def blog_post(request, tag_slug=None):
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         relates = results.filter(tags__in=[tag])
-        return render(request, 'blog/related.html', {'relates': relates, 'tag': tag})
+        return render(request, 'blog/related.html', {'relates': relates, 'tag': tag, 'results': results})
     if len(results) == 0:
         empty_msg = "No post to show"
         return render(request, 'blog/blog_post.html', {'empty': empty_msg})
@@ -54,18 +54,3 @@ def post_create(request):
     else:
         form = forms.CreatePost()
     return render(request, 'blog/post_create.html', {'myform': form})
-
-
-# def detailed_view(request, slug):
-#     post = get_object_or_404(Post, tags=slug)
-#     return render(request, 'blog/post_detail.html', {'query':post})
-
-
-# def tagged(request, slug):
-#     tag = get_object_or_404(Tag, slug=slug)
-#     query = Post.objects.filter(tags=tag)
-#     return render(request, 'blogs/blog_post.html', {'query': query})
-
-# def detail_view(request, slug):
-#     post = get_object_or_404(Post, slug)
-#     return render(request, 'blog/post_detail.html' ,{'post':post })

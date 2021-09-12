@@ -5,10 +5,10 @@
         <h2>Related Posts</h2>
         <div class="relate">
         {% for relate in relates %}
-         <div><img src="{{relate.thumb.url}}" alt=""></div>
-         <div><a href="{% url 'blogs:detail' slug=relate.slug">{{relate.title}}</a></div>
+             <div><img src="{{relate.thumb.url}}" alt=""></div>
+             <div><a href="">{{relate.title}}</a></div>
         {% empty %}
-        There are no similar posts
+          <p>There is no similar posts</p>
         {% endfor %}
        </div>
 </div>

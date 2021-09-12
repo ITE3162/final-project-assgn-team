@@ -1,0 +1,13 @@
+{% extends 'apart_layout.html' %}
+
+{% block apart %}
+<div class="container">
+    <a href="{% url 'home' %}">Back to home</a>
+    {% if context %}
+        <center class="alert-success pt-15">
+                <p>{{context}} Thanks to contact us!</p>
+                <p>Your message received well!</p>
+        </center>
+    {% endif %}
+</div>
+{% endblock %}
