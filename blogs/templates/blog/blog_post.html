@@ -29,7 +29,7 @@
               <p class="author"><span>Author: </span>{{result.author}}</p>
                <p>
                    {% for tag in result.tags.all %}
-                   <p><a href="{% url 'blogs:tagged' tag.slug %}">{{tag.name}}</a></p>
+                    <p><a href="{% url 'blogs:tagged' tag.slug %}">{{tag.name}}</a></p>
                    {% endfor %}
         </div>
             {% endfor %}
