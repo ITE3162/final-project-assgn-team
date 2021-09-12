@@ -9,7 +9,7 @@ class Post(models.Model):
     body = models.TextField()
     slug = models.SlugField()
     date = models.DateTimeField(auto_now_add=True)
-    thumb = models.ImageField(default='default.jpg', blank=True, upload_to='media/')
+    thumb = models.ImageField(default='default.png', blank=True, upload_to='media/')
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     tags = TaggableManager(verbose_name='Category')
 
